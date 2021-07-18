@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+       
+    <!--I did this so it will support for all devices-->
+    <link rel="apple-touch-icon" sizes="180x180" href="faviconfolder/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="faviconfolder/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="faviconfolder/favicon-16x16.png">
+    <link rel="manifest" href="faviconfolder/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+ 
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+
+    <style>
+        body{
+            background-color: #3498db;
+        }
+        #form-container{
+            background-color: white;
+            padding: 80px 55px 90px 55px;
+            width:300px;
+            text-align: center;
+            margin:240px auto;
+    
+        }
+        h2{
+            margin:0px 0px 10px 0px;
+        }
+        input{
+            width:212px;
+            margin:10px 0px;
+            padding: 10px;
+        }
+        input[type='submit']{
+            width:225px;
+            background-color: #3498db;
+            border:0px;
+            color:white;
+        }
+        .error{
+            color:red;
+            margin:0px;
+            text-align: left;
+            padding: 0px 0px 0px 38px;
+           
+         
+
+        }
+    </style>
+</head>
+<body>
+    <div id="form-container" onsubmit="return vallidateForm()">   <!-- yaha onsubmit event use garai ko chuim . so that form will not submite na hos vanai rah-->
+        <h2>Login</h2>
+        <form action="">
+            <input type="text" placeholder="User Name" id='username'><br>
+            <p id='userError' class='error'></p>   <!-- error mesg display gernah for user-->
+            
+            <input type="password" placeholder="Password" id='password'><br>
+            <p id='passwordError' class='error'></p>    <!-- error mesg display gernah for password-->
+
+            <input type="submit">
+            <h3 class='error' id='forPrint' style='color:green'></h3>
+        </form>
+    </div>
+    <script>
+        let username=document.getElementById('username');
+        let password=document.getElementById('password');
+        var flag=1;
+
+        function vallidateForm(){
+            if(username.value ==''){
+                document.getElementById('userError').innerHTML='User Name is empty';
+                flag=0;
+            
+            }else if(username.value.length <3){
+                document.getElementById('userError').innerHTML='UserName require min 3 character !';
+                flag=0;
+            
+            }else{
+                document.getElementById('userError').innerHTML='';
+                flag=1;
+            }
+            // above is for User Name Vallidation
+
+
+            // down is for User Password Vallidation
+            if(password.value == ''){
+                document.getElementById('passwordError').innerHTML='Password is empty';
+                flag=0;
+
+            }else{
+                document.getElementById('passwordError').innerHTML='';
+                flag=1;
+            }
+
+            if(flag){
+                document.getElementById('forPrint').innerHTML='Submitted Sucessfully';
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+    </script>
+</body>
+</html>
